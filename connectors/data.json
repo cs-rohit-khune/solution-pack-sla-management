@@ -1,0 +1,36 @@
+[
+    {
+        "name": "slacalculator",
+        "label": "SLA Calculator",
+        "category": [
+            "Information"
+        ],
+        "description": "Calculates SLA due date based on locale and work hours. This connector needs soar framework solution pack for supporting playbooks and module changes",
+        "publisher": "Fortinet",
+        "operation_roles": [],
+        "configurations": [
+            {
+                "id": 10,
+                "config_id": "906b3c02-7f22-42fc-8aca-5fbbe378ba36",
+                "status": 1,
+                "name": "Demo",
+                "default": true,
+                "config": {
+                    "timezone": "Asia\/Kolkata",
+                    "full_time": true
+                },
+                "remote_status": [],
+                "health_status": [],
+                "connector": 27,
+                "agent": "8b7e6fa07e84eb46bc454c37853235d8",
+                "teams": []
+            }
+        ],
+        "dataImports": [],
+        "install_mode": "rpm",
+        "ingestionPlaybooks": {
+            "collections": [],
+            "exported_tags": []
+        }
+    }
+]

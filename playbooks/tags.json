@@ -1,0 +1,10 @@
+[
+    "Extended",
+    "ManualTrigger",
+    "PostCreate",
+    "PostUpdate",
+    "SLA",
+    "Scheduled",
+    "Subroutine",
+    "system"
+]
