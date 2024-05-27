@@ -1,0 +1,94 @@
+{
+    "name": "sLAManagement",
+    "version": "1.0.0",
+    "fsrMinCompatibility": "7.5.0",
+    "type": "solutionpack",
+    "local": true,
+    "label": "SLA Management",
+    "dependencies": [
+        {
+            "name": "sOARFramework",
+            "type": "solutionpack",
+            "label": "SOAR Framework",
+            "minVersion": null
+        }
+    ],
+    "prerequisite": null,
+    "publisher": "Fortinet",
+    "certified": "true",
+    "description": "The SLA Management Solution Pack automates and streamlines the tracking and managing the SLA for alerts and incidents in the FortiSOAR.",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-sla-management/blob/release/1.0.0/README.md",
+    "category": [],
+    "supportInfo": null,
+    "iconLarge": null,
+    "postInstallConfig": null,
+    "date": "2024-05-24T11:45:39+00:00",
+    "contents": {
+        "modules": {
+            "sla_template": {
+                "name": "SLA Templates",
+                "apiName": "sla_template"
+            }
+        },
+        "viewTemplates": {
+            "sla_template": {
+                "name": "SLA Templates",
+                "apiName": "sla_template",
+                "views": [
+                    "list",
+                    "detail",
+                    "form"
+                ]
+            }
+        },
+        "views": {
+            "navigation": [
+                "Automation"
+            ]
+        },
+        "roles": [
+            {
+                "name": "SOC Manager"
+            },
+            {
+                "name": "Full App Permissions"
+            },
+            {
+                "name": "SOC Analyst"
+            },
+            {
+                "name": "Read-Only User"
+            }
+        ],
+        "globalVariables": [
+            {
+                "name": "Current_Date",
+                "value": "{{arrow.utcnow().timestamp}}",
+                "default_value": "{{arrow.utcnow().timestamp}}"
+            },
+            {
+                "name": "Reset_SLA",
+                "value": "true",
+                "default_value": "true"
+            }
+        ],
+        "playbooks": [
+            {
+                "name": "06 - IRP - Case Management"
+            }
+        ],
+        "connectors": [
+            {
+                "name": "SLA Calculator",
+                "apiName": "slacalculator"
+            }
+        ],
+        "recordSets": [
+            {
+                "name": "SLA Templates",
+                "apiName": "sla_template",
+                "count": 5
+            }
+        ]
+    }
+}
