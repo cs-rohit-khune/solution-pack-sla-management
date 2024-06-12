@@ -1,7 +1,7 @@
 {
     "name": "sLAManagement",
     "version": "1.0.0",
-    "fsrMinCompatibility": "7.5.0",
+    "fsrMinCompatibility": "7.6.0",
     "type": "solutionpack",
     "local": true,
     "label": "SLA Management",

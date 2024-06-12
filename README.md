@@ -3,7 +3,7 @@
 - **Version**: 1.0.0 
 - **Certified**: Yes 
 - **Publisher**: Fortinet 
-- **Compatible Version**: FortiSOAR 7.5.0 and later 
+- **Compatible Version**: FortiSOAR 7.6.0 and later 
  
 
  # Overview 
