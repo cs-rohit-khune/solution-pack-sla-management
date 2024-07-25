@@ -1,0 +1,32 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "app",
+    "config": {
+        "navigation": [
+            {
+                "editMode": false,
+                "icon": "icon icon-automation",
+                "items": [
+                    {
+                        "editMode": false,
+                        "icon": "fa fa-clock-o",
+                        "require": {
+                            "action": "read",
+                            "module": "sla_template"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "sla_template"
+                            }
+                        },
+                        "title": "SLA Templates"
+                    }
+                ],
+                "title": "Automation"
+            }
+        ]
+    },
+    "uuid": "navigation"
+}

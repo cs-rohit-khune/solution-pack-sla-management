@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Current_Date",
+        "value": "{{arrow.utcnow().timestamp}}",
+        "default_value": "{{arrow.utcnow().timestamp}}"
+    },
+    {
+        "name": "Reset_SLA",
+        "value": "true",
+        "default_value": "true"
+    }
+]
