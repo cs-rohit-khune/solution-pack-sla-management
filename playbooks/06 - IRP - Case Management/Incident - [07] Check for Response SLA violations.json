@@ -1,5 +1,4 @@
 {
-    "@context": "\/api\/3\/contexts\/Workflow",
     "@type": "Workflow",
     "triggerLimit": null,
     "name": "Incident - [07] Check for Response SLA violations",
@@ -121,6 +120,8 @@
     ],
     "groups": [],
     "priority": null,
+    "playbookOrigin": "\/api\/3\/picklists\/b6d710a9-a8ec-41ec-8817-fe9fa062fcdd",
+    "isEditable": false,
     "uuid": "e0af41c5-134c-48e4-b58e-805a3f6d9a21",
     "owners": [],
     "isPrivate": false,
