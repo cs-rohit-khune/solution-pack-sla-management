@@ -1,5 +1,4 @@
 {
-    "@context": "\/api\/3\/contexts\/Workflow",
     "@type": "Workflow",
     "triggerLimit": null,
     "name": "Incident - [04] Check for SLA violations",
@@ -138,6 +137,8 @@
     ],
     "groups": [],
     "priority": null,
+    "playbookOrigin": "\/api\/3\/picklists\/b6d710a9-a8ec-41ec-8817-fe9fa062fcdd",
+    "isEditable": false,
     "uuid": "2f5b3fcf-7a4c-433d-b603-1a9588153ffb",
     "owners": [],
     "isPrivate": false,

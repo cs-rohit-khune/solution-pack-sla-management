@@ -1,5 +1,4 @@
 {
-    "@context": "\/api\/3\/contexts\/Workflow",
     "@type": "Workflow",
     "triggerLimit": null,
     "name": "Alert - [01] Capture All SLA (Upon Create)",
@@ -107,6 +106,8 @@
     ],
     "groups": [],
     "priority": null,
+    "playbookOrigin": "\/api\/3\/picklists\/b6d710a9-a8ec-41ec-8817-fe9fa062fcdd",
+    "isEditable": false,
     "uuid": "2855e308-a058-41a5-a9ad-1919a7629912",
     "owners": [],
     "isPrivate": false,

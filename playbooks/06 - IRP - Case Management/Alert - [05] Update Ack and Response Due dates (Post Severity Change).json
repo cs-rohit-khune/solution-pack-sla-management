@@ -1,5 +1,4 @@
 {
-    "@context": "\/api\/3\/contexts\/Workflow",
     "@type": "Workflow",
     "triggerLimit": null,
     "name": "Alert - [05] Update Ack and Response Due dates (Post Severity Change)",
@@ -507,6 +506,8 @@
     ],
     "groups": [],
     "priority": null,
+    "playbookOrigin": "\/api\/3\/picklists\/b6d710a9-a8ec-41ec-8817-fe9fa062fcdd",
+    "isEditable": false,
     "uuid": "54afab11-6934-4b30-9c21-db43a878d2d1",
     "owners": [],
     "isPrivate": false,
