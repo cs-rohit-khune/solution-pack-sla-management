@@ -342,7 +342,7 @@
                     {
                         "option": "Set Ack Date",
                         "step_iri": "\/api\/3\/workflow_steps\/8386bc90-78a0-46b2-b33f-655c697b24d2",
-                        "condition": "{{ vars.input.records[0].status.itemValue == vars.steps.Get_SLA_Details.sla_time_list.alertAackTrackedOn }}",
+                        "condition": "{{ (vars.input.records[0].status.itemValue == vars.steps.Get_SLA_Details.sla_time_list.alertAackTrackedOn) or (vars.input.records[0].ackSlaStatus.itemValue == 'Awaiting Action' and vars.input.records[0].status.itemValue == 'Closed') }}",
                         "step_name": "Check Acknowledge SLA Status"
                     },
                     {
@@ -351,7 +351,8 @@
                         "step_iri": "\/api\/3\/workflow_steps\/084b0d14-e47e-4cc5-9a12-79bbd46d5014",
                         "step_name": "Recalculate Ack SLA"
                     }
-                ]
+                ],
+                "step_variables": []
             },
             "status": null,
             "top": "435",
