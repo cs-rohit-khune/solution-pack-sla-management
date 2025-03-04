@@ -5,17 +5,18 @@
             "PLURAL_NAME": "Modèles SLA"
         },
         "FIELDS": {
-            "INCPAUSESLAON": "Mettre en pause la SLA d'incident le",
-            "ALTPAUSESLAON": "Mettre en pause la SLA d'alerte le",
-            "ACKSLATIME": "Temps d'accusé de réception d'incident",
-            "INCSEVERITY": "Gravité de l'incident",
-            "RESTIME": "Temps de réponse à l'incident",
-            "SLATRACKEDON": "Suivi de la SLA d'accusé de réception d'incident le",
-            "RESSLATRACKEDON": "Suivi de la SLA de réponse à l'incident le",
-            "ALERTACKTIME": "Temps d'accusé de réception d'alerte",
-            "ALERTRESTIME": "Temps de réponse à l'alerte",
-            "ALERTACKTRACKEDON": "Suivi de l'accusé de réception d'alerte le",
-            "ALERTRESTRACKEDON": "Suivi de la réponse à l'alerte le"
+            "ALERTACKTIME": "Temps d'accusé de réception de l'alerte",
+            "INCPAUSESLAON": "Mettre en pause le SLA de l'incident sur",
+            "ALTPAUSESLAON": "Mettre en pause le SLA de l'alerte sur",
+            "INCSEVERITY": "Gravité",
+            "ACKSLATIME": "Temps d'accusé de réception de l'incident",
+            "RESTIME": "Temps de réponse de l'incident",
+            "SLATRACKEDON": "SLA d'accusé de réception de l'incident suivi sur",
+            "RESSLATRACKEDON": "SLA de réponse de l'incident suivi sur",
+            "ALERTRESTIME": "Temps de réponse de l'alerte",
+            "ALERTACKTRACKEDON": "Accusé de réception de l'alerte suivi sur",
+            "ALERTRESTRACKEDON": "Réponse de l'alerte suivie sur",
+            "RESTARTSLA": "Redémarrer le SLA"
         }
     }
 }

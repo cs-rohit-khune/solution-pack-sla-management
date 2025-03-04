@@ -74,7 +74,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "GET SLA",
+            "name": "Get SLA Details",
             "description": null,
             "arguments": {
                 "arguments": {
@@ -83,8 +83,10 @@
                 },
                 "apply_async": false,
                 "step_variables": {
-                    "sla_time_list": "{{vars.result.sla_time_list}}"
+                    "sla_time_list": "{{vars.steps.Get_SLA_Details.sla_time_list}}"
                 },
+                "pass_parent_env": false,
+                "pass_input_record": false,
                 "workflowReference": "\/api\/3\/workflows\/45096dd1-6f64-4f86-937f-711a1054d436"
             },
             "status": null,
@@ -123,7 +125,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "alerts": "{{vars.input.params['alert_id']}}",
                     "people": [],
-                    "content": "<p><span style=\"font-size: 15px; color: #de7a13;\" class=\"fa fa-exclamation-triangle\">&nbsp;<\/span>SLA templates for {{vars.input.params.severity}} severity is unavailable for the Tenant<\/p>",
+                    "content": "<p><span class=\"fa fa-exclamation-triangle\" style=\"font-size: 15px; color: #de7a13;\">&nbsp;<\/span>SLA templates for {{vars.input.params.severity}} severity is unavailable for the Tenant<\/p>",
                     "__replace": "",
                     "isImportant": false,
                     "peopleUpdated": false
@@ -254,23 +256,23 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "GET SLA -> Verify SLA Details",
+            "name": "Get SLA Details -> Verify SLA Details",
             "targetStep": "\/api\/3\/workflow_steps\/6efd9218-5a7c-4580-a9d7-9629ad156817",
             "sourceStep": "\/api\/3\/workflow_steps\/577b4fa8-b0aa-4cd0-95d5-50ed8a8b3a48",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "66a7e61f-b705-49f6-a954-a7deae7e2e37"
+            "uuid": "de32d151-0b56-463b-b4d2-0210cb8bf0cd"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> GET SLA",
+            "name": "Start -> Get SLA Details",
             "targetStep": "\/api\/3\/workflow_steps\/577b4fa8-b0aa-4cd0-95d5-50ed8a8b3a48",
             "sourceStep": "\/api\/3\/workflow_steps\/e184dde0-72cd-4daf-ad51-e9861f0244ff",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "aae07c04-0a33-4ae4-b4f4-468f694397ff"
+            "uuid": "7b40d50a-a44c-4598-9ea6-13fdfe8a011a"
         },
         {
             "@type": "WorkflowRoute",

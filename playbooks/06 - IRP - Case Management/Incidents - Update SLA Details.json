@@ -29,10 +29,10 @@
                 "when": "{{vars.sla_time_list.incAckTime | int > 0}}",
                 "config": "c5c41701-85bc-477e-a06d-8daf36efa14a",
                 "params": {
-                    "slaTime": "{{vars.sla_time_list.incAckTime}}",
+                    "slaTime": "{{vars.sla_time_list.alertAckTime}}",
                     "recordCreateTime": "{{vars.input.params['inc_crt_dt']}}"
                 },
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "slacalculator",
                 "operation": "calculateSLA",
                 "operationTitle": "Calculate SLA",
@@ -66,7 +66,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "570",
+            "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
@@ -115,36 +115,6 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Note for Default SLA",
-            "description": null,
-            "arguments": {
-                "when": "{{vars.sla_time_list.defaultSLA}}",
-                "resource": {
-                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
-                    "people": [],
-                    "content": "<p><span style=\"font-size: 15px; color: #de7a13;\" class=\"fa fa-exclamation-triangle\">&nbsp;<\/span>SLA templates for {{vars.input.params.severity}} severity is unavailable for the Tenant<\/p>",
-                    "__replace": "",
-                    "incidents": "{{vars.input.params['incident_id']}}",
-                    "isImportant": false,
-                    "peopleUpdated": false
-                },
-                "operation": "Overwrite",
-                "collection": "\/api\/3\/comments",
-                "__recommend": [],
-                "fieldOperation": {
-                    "recordTags": "Overwrite"
-                },
-                "step_variables": []
-            },
-            "status": null,
-            "top": "840",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
-            "group": null,
-            "uuid": "6db741d2-f8bc-4236-8435-d81948604562"
-        },
-        {
-            "@type": "WorkflowStep",
             "name": "Start",
             "description": null,
             "arguments": {
@@ -168,15 +138,38 @@
         },
         {
             "@type": "WorkflowStep",
+            "name": "Update Response SLA",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "resSla": "{%if vars.sla_time_list.incResTime | int ==0 %}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
+                    "resDueBy": "{%if vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp'] and not vars.sla_time_list.restart_sla %} {{vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp']}} {% else %} null {%endif%}"
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "{{vars.input.params['incident_id']}}",
+                "__recommend": [],
+                "tagsOperation": "OverwriteTags",
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "category": "Append",
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
+            "uuid": "8e4cc917-556a-41ef-bcf4-e5868568f72b"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Update SLA",
             "description": null,
             "arguments": {
                 "resource": {
-                    "__link": {
-                        "recordTags": "{% if vars.sla_time_list.defaultSLA %}Default SLA{% endif %}"
-                    },
-                    "resSla": "{%if vars.sla_time_list.incResTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
-                    "resDueBy": "{%if vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp']}} {% else %} null {%endif%}",
                     "slaState": "{%if vars.sla_time_list.incAckTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
                     "ackDueDate": "{%if vars.steps.Calculate_Ack_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Ack_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}"
                 },
@@ -188,12 +181,12 @@
                 "collectionType": "\/api\/3\/incidents",
                 "fieldOperation": {
                     "category": "Append",
-                    "recordTags": "Append"
+                    "recordTags": "Overwrite"
                 },
                 "step_variables": []
             },
             "status": null,
-            "top": "705",
+            "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -230,23 +223,23 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate ACK SLA -> Calculate Resp SLA",
-            "targetStep": "\/api\/3\/workflow_steps\/832654c9-6fc8-4fda-8da2-87164c9a8bc0",
+            "name": "Calculate Ack SLA -> Update SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/4ad0e77d-6233-4e41-a43a-ea3ea7af6e8b",
             "sourceStep": "\/api\/3\/workflow_steps\/b773728a-77a4-4c46-878b-b900555ce197",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "3014f033-4716-4dd0-aef6-7cf275dd7726"
+            "uuid": "90f6ee45-0334-433b-9062-3376d539e5a6"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate Resp SLA -> Update SLA",
-            "targetStep": "\/api\/3\/workflow_steps\/4ad0e77d-6233-4e41-a43a-ea3ea7af6e8b",
+            "name": "Calculate Resp SLA -> Copy of Update SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/8e4cc917-556a-41ef-bcf4-e5868568f72b",
             "sourceStep": "\/api\/3\/workflow_steps\/832654c9-6fc8-4fda-8da2-87164c9a8bc0",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "6ee823fe-2425-4530-9b5f-89efb3e0df16"
+            "uuid": "d49fd0b3-611a-4c02-af10-9689b21c52d2"
         },
         {
             "@type": "WorkflowRoute",
@@ -270,13 +263,13 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Update SLA -> Note for Default SLA",
-            "targetStep": "\/api\/3\/workflow_steps\/6db741d2-f8bc-4236-8435-d81948604562",
+            "name": "Update SLA -> Calculate Resp SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/832654c9-6fc8-4fda-8da2-87164c9a8bc0",
             "sourceStep": "\/api\/3\/workflow_steps\/4ad0e77d-6233-4e41-a43a-ea3ea7af6e8b",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "9a8da218-aea7-4c2f-822d-e2eb60e45fa4"
+            "uuid": "c4f77101-6915-48fb-9b6f-d3770695f80f"
         },
         {
             "@type": "WorkflowRoute",
@@ -301,15 +294,13 @@
     ],
     "groups": [],
     "priority": null,
-    "playbookOrigin": "\/api\/3\/picklists\/b6d710a9-a8ec-41ec-8817-fe9fa062fcdd",
-    "isEditable": false,
     "uuid": "50475684-0feb-4da0-889c-7046cc6f482b",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
+        "system",
         "SLA",
-        "Subroutine",
-        "system"
+        "Subroutine"
     ]
 }

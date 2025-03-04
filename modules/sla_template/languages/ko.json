@@ -2,20 +2,21 @@
     "SLA_TEMPLATE": {
         "MODULE_DETAILS": {
             "SINGULAR_NAME": "SLA 템플릿",
-            "PLURAL_NAME": "SLA 템플릿"
+            "PLURAL_NAME": "SLA 템플릿들"
         },
         "FIELDS": {
-            "INCPAUSESLAON": "일시적 인시던트 SLA 활성화",
-            "ALTPAUSESLAON": "일시적 경보 SLA 활성화",
-            "ACKSLATIME": "인시던트 응답 시간",
+            "ALERTACKTIME": "알림 승인 시간",
+            "INCPAUSESLAON": "사고 SLA 일시 중지 조건",
+            "ALTPAUSESLAON": "알림 SLA 일시 중지 조건",
             "INCSEVERITY": "심각도",
-            "RESTIME": "인시던트 대응 시간",
-            "SLATRACKEDON": "인시던트 응답 SLA 추적 활성화",
-            "RESSLATRACKEDON": "인시던트 대응 SLA 추적 활성화",
-            "ALERTACKTIME": "경보 응답 시간",
-            "ALERTRESTIME": "경보 대응 시간",
-            "ALERTACKTRACKEDON": "경보 응답 추적 활성화",
-            "ALERTRESTRACKEDON": "경보 대응 추적 활성화"
+            "ACKSLATIME": "사고 승인 시간",
+            "RESTIME": "사고 응답 시간",
+            "SLATRACKEDON": "사고 승인 SLA 추적 기준",
+            "RESSLATRACKEDON": "사고 응답 SLA 추적 기준",
+            "ALERTRESTIME": "알림 응답 시간",
+            "ALERTACKTRACKEDON": "알림 승인 추적 기준",
+            "ALERTRESTRACKEDON": "알림 응답 추적 기준",
+            "RESTARTSLA": "SLA 재시작"
         }
     }
 }

@@ -1,0 +1,11 @@
+{
+    "ALERTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Alerte",
+            "PLURAL_NAME": "Alertes"
+        },
+        "FIELDS": {
+            "RESPONSESLAUNPAUSEDDATE": "Date de reprise du SLA de réponse"
+        }
+    }
+}

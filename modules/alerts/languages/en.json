@@ -1,0 +1,11 @@
+{
+    "ALERTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Alert",
+            "PLURAL_NAME": "Alerts"
+        },
+        "FIELDS": {
+            "RESPONSESLAUNPAUSEDDATE": "Response SLA Unpaused Date"
+        }
+    }
+}

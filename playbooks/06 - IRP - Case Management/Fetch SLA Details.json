@@ -149,7 +149,8 @@
                         "step_iri": "\/api\/3\/workflow_steps\/276de63e-90b7-4d6e-a50b-7b56c37da526",
                         "step_name": "Get SLA Details Enterprise"
                     }
-                ]
+                ],
+                "step_variables": []
             },
             "status": null,
             "top": "165",
@@ -205,7 +206,7 @@
             "name": "SLA Time List",
             "description": null,
             "arguments": {
-                "sla_time_list": "{\n  \"defaultSLA\" : {{vars.default_sla}},\n  \"incAckTime\" : \"{{vars.sla_data[0].ackSlaTime}}\",\n  \"incResTime\" : \"{{vars.sla_data[0].resTime}}\",\n  \"incAckTrackedOn\" : \"{{vars.sla_data[0].slaTrackedOn.itemValue}}\",\n  \"incResTrackedOn\" : \"{{vars.sla_data[0].resSlaTrackedOn.itemValue}}\",\n  \"alertAckTime\" : \"{{vars.sla_data[0].alertAckTime}}\",\n  \"alertResTime\" : \"{{vars.sla_data[0].alertResTime}}\",\n  \"alertAackTrackedOn\" : \"{{vars.sla_data[0].alertAckTrackedOn.itemValue}}\",\n  \"alertResTrackedOn\" : \"{{vars.sla_data[0].alertResTrackedOn.itemValue}}\",\n  \"altPauseSLAOn\" : {% if vars.sla_data[0].altPauseSLAOn | type_debug == 'list' %}{{vars.sla_data[0].altPauseSLAOn | json_query('[].itemValue')}}{% else %}\"{{vars.sla_data[0].altPauseSLAOn.itemValue}}\"{% endif %},\n  \"incPauseSLAOn\" : {% if vars.sla_data[0].incPauseSLAOn | type_debug == 'list' %}{{vars.sla_data[0].incPauseSLAOn | json_query('[].itemValue')}}{% else %}\"{{vars.sla_data[0].incPauseSLAOn.itemValue}}\"{% endif %}\n}"
+                "sla_time_list": "{\n  \"defaultSLA\" : {{vars.default_sla}},\n  \"incAckTime\" : \"{{vars.sla_data[0].ackSlaTime}}\",\n  \"incResTime\" : \"{{vars.sla_data[0].resTime}}\",\n  \"incAckTrackedOn\" : \"{{vars.sla_data[0].slaTrackedOn.itemValue}}\",\n  \"incResTrackedOn\" : \"{{vars.sla_data[0].resSlaTrackedOn.itemValue}}\",\n  \"alertAckTime\" : \"{{vars.sla_data[0].alertAckTime}}\",\n  \"alertResTime\" : \"{{vars.sla_data[0].alertResTime}}\",\n  \"alertAackTrackedOn\" : \"{{vars.sla_data[0].alertAckTrackedOn.itemValue}}\",\n  \"alertResTrackedOn\" : \"{{vars.sla_data[0].alertResTrackedOn.itemValue}}\",\n  \"altPauseSLAOn\" : {% if vars.sla_data[0].altPauseSLAOn | type_debug == 'list' %}{{vars.sla_data[0].altPauseSLAOn | json_query('[].itemValue')}}{% else %}\"{{vars.sla_data[0].altPauseSLAOn.itemValue}}\"{% endif %},\n  \"incPauseSLAOn\" : {% if vars.sla_data[0].incPauseSLAOn | type_debug == 'list' %}{{vars.sla_data[0].incPauseSLAOn | json_query('[].itemValue')}}{% else %}\"{{vars.sla_data[0].incPauseSLAOn.itemValue}}\"{% endif %},\n  \"restart_sla\" : {{vars.sla_data[0].restartSLA}}\n}"
             },
             "status": null,
             "top": "705",

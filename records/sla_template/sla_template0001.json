@@ -5,6 +5,7 @@
         "resTime": "80",
         "alertAckTime": "70",
         "alertResTime": "80",
+        "restartSLA": false,
         "incPauseSLAOn": [
             "\/api\/3\/picklists\/bb74042a-f699-11e7-8c3f-9a214cf093ae"
         ],
@@ -29,6 +30,7 @@
         "resTime": "20",
         "alertAckTime": "10",
         "alertResTime": "20",
+        "restartSLA": false,
         "incPauseSLAOn": [
             "\/api\/3\/picklists\/bb74042a-f699-11e7-8c3f-9a214cf093ae"
         ],
@@ -53,6 +55,7 @@
         "resTime": "50",
         "alertAckTime": "40",
         "alertResTime": "50",
+        "restartSLA": false,
         "incPauseSLAOn": [
             "\/api\/3\/picklists\/bb74042a-f699-11e7-8c3f-9a214cf093ae"
         ],
@@ -77,6 +80,7 @@
         "resTime": "30",
         "alertAckTime": "20",
         "alertResTime": "30",
+        "restartSLA": false,
         "incPauseSLAOn": [
             "\/api\/3\/picklists\/bb74042a-f699-11e7-8c3f-9a214cf093ae"
         ],
@@ -101,6 +105,7 @@
         "resTime": "70",
         "alertAckTime": "60",
         "alertResTime": "70",
+        "restartSLA": false,
         "incPauseSLAOn": [
             "\/api\/3\/picklists\/bb74042a-f699-11e7-8c3f-9a214cf093ae"
         ],
