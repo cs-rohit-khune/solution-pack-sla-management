@@ -1,0 +1,11 @@
+{
+    "INCIDENTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "インシデント",
+            "PLURAL_NAME": "インシデント一覧"
+        },
+        "FIELDS": {
+            "RESPONSESLAUNPAUSEDDATE": "対応SLA再開日"
+        }
+    }
+}

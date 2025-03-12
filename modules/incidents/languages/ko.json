@@ -1,0 +1,11 @@
+{
+    "INCIDENTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "사건",
+            "PLURAL_NAME": "사건들"
+        },
+        "FIELDS": {
+            "RESPONSESLAUNPAUSEDDATE": "응답 SLA 재개 날짜"
+        }
+    }
+}

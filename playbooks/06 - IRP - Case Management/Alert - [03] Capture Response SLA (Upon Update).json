@@ -275,7 +275,6 @@
                         ]
                     },
                     "day_today": "{{arrow.utcnow().format('dddd')}}",
-                    "prev_state": "vars.previous.data.state",
                     "is_unpaused": "{% if (vars.previous.data.respSlaStatus | fromIRI).itemValue == 'Paused' %}true{% else %}false{% endif %}",
                     "prev_status": "{{(vars.previous.data.status | fromIRI).itemValue}}",
                     "alert_severity": "{{vars.input.records[0].severity.itemValue}}"

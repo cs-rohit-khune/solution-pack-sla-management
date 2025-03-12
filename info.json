@@ -31,6 +31,10 @@
                 "name": "Alerts",
                 "apiName": "alerts"
             },
+            "incidents": {
+                "name": "Incidents",
+                "apiName": "incidents"
+            },
             "sla_template": {
                 "name": "SLA Templates",
                 "apiName": "sla_template"

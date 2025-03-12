@@ -1,0 +1,11 @@
+{
+    "INCIDENTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Incident",
+            "PLURAL_NAME": "Incidents"
+        },
+        "FIELDS": {
+            "RESPONSESLAUNPAUSEDDATE": "Response SLA Unpaused Date"
+        }
+    }
+}
