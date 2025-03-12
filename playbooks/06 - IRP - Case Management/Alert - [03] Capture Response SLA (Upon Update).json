@@ -25,7 +25,7 @@
                 "params": {
                     "sla_time": "{% if vars.input.records[0].alertRemainingRespSLA%}{{vars.input.records[0].alertRemainingRespSLA}}{%else%}{{vars.sla_time_list.alertResTime}}{%endif%}",
                     "end_datetime": "{{vars.input.records[0].modifyDate}}",
-                    "start_datetime": "{% if vars.prev_status == 'Investigating' and vars.input.records[0].responseSLAUnpausedDate is none %}{{vars.input.records[0].ackDate}}{% elif vars.previous.data.responseSLAUnpausedDate %}{{vars.previous.data.responseSLAUnpausedDate}}{% else %}{{vars.input.records[0].createDate}}{% endif %}"
+                    "start_datetime": "{% if vars.prev_status == 'Investigating' and vars.input.records[0].responseSLAUnpausedDate is none %}{{vars.input.records[0].ackDate - (vars.input.records[0].ackDate % 60)}}{% elif vars.previous.data.responseSLAUnpausedDate %}{{vars.previous.data.responseSLAUnpausedDate - (vars.previous.data.responseSLAUnpausedDate % 60)}}{% else %}{{vars.input.records[0].createDate - (vars.input.records[0].createDate % 60)}}{% endif %}"
                 },
                 "version": "2.1.0",
                 "connector": "slacalculator",

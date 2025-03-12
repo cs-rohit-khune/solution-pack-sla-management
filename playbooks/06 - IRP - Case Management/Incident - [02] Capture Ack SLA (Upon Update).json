@@ -25,9 +25,9 @@
                 "params": {
                     "sla_time": "{{vars.sla_time_list.incAckTime}}",
                     "end_datetime": "{{vars.input.records[0].modifyDate}}",
-                    "start_datetime": "{{vars.input.records[0].createDate}}"
+                    "start_datetime": "{{vars.input.records[0].createDate - (vars.input.records[0].createDate % 60)}}"
                 },
-                "version": "2.0.0",
+                "version": "2.1.0",
                 "connector": "slacalculator",
                 "operation": "calculate_elapsed_time",
                 "operationTitle": "Calculate Elapsed SLA Time",
@@ -329,7 +329,7 @@
                         "option": "Set Ack Date",
                         "step_iri": "\/api\/3\/workflow_steps\/d1d2ffdc-dcfb-4309-8274-dee947f8ea88",
                         "condition": "{{ (vars.input.records[0].status.itemValue == vars.steps.Get_SLA_Details.sla_time_list.incAckTrackedOn) or (vars.input.records[0].slaState.itemValue == 'Awaiting Action' and vars.input.records[0].status.itemValue == 'Resolved') }}",
-                        "step_name": "Check Acknowledge SLA Status"
+                        "step_name": "Check Ack SLA Status"
                     },
                     {
                         "option": "Recalculate Ack SLA",

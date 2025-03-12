@@ -1,0 +1,11 @@
+{
+    "ALERTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "警报",
+            "PLURAL_NAME": "警报"
+        },
+        "FIELDS": {
+            "RESPONSESLAUNPAUSEDDATE": "响应 SLA 取消暂停日期"
+        }
+    }
+}

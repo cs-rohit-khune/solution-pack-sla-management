@@ -1,5 +1,4 @@
 {
-    "@context": "\/api\/3\/contexts\/Workflow",
     "@type": "Workflow",
     "triggerLimit": null,
     "name": "Alert - [02] Capture Ack SLA (Upon Update)",
@@ -26,9 +25,9 @@
                 "params": {
                     "sla_time": "{{vars.sla_time_list.alertAckTime}}",
                     "end_datetime": "{{vars.input.records[0].modifyDate}}",
-                    "start_datetime": "{{vars.input.records[0].createDate}}"
+                    "start_datetime": "{{vars.input.records[0].createDate - (vars.input.records[0].createDate % 60)}}"
                 },
-                "version": "2.0.0",
+                "version": "2.1.0",
                 "connector": "slacalculator",
                 "operation": "calculate_elapsed_time",
                 "operationTitle": "Calculate Elapsed SLA Time",

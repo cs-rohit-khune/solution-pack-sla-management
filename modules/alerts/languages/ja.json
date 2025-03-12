@@ -1,0 +1,11 @@
+{
+    "ALERTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "アラート",
+            "PLURAL_NAME": "アラート"
+        },
+        "FIELDS": {
+            "RESPONSESLAUNPAUSEDDATE": "対応SLA再開日"
+        }
+    }
+}
