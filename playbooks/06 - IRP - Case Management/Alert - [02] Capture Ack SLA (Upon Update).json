@@ -43,7 +43,31 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Check Acknowledge SLA Status",
+            "name": "Get SLA Details",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "tenant_iri": "{{vars.input.records[0].tenant['@id'] | ternary(vars.input.records[0].tenant['@id'], none)}}",
+                    "inc_severity": "{{vars.input.records[0].severity.itemValue}}"
+                },
+                "apply_async": false,
+                "step_variables": {
+                    "sla_time_list": "{{vars.result.sla_time_list}}"
+                },
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "\/api\/3\/workflows\/45096dd1-6f64-4f86-937f-711a1054d436"
+            },
+            "status": null,
+            "top": "165",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "0442c07a-96d8-4d43-a984-4def4fb61db1"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Is Acknowledge SLA Met",
             "description": null,
             "arguments": {
                 "conditions": [
@@ -68,30 +92,6 @@
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
             "group": null,
             "uuid": "8386bc90-78a0-46b2-b33f-655c697b24d2"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Get SLA Details",
-            "description": null,
-            "arguments": {
-                "arguments": {
-                    "tenant_iri": "{{vars.input.records[0].tenant['@id'] | ternary(vars.input.records[0].tenant['@id'], none)}}",
-                    "inc_severity": "{{vars.input.records[0].severity.itemValue}}"
-                },
-                "apply_async": false,
-                "step_variables": {
-                    "sla_time_list": "{{vars.result.sla_time_list}}"
-                },
-                "pass_parent_env": false,
-                "pass_input_record": false,
-                "workflowReference": "\/api\/3\/workflows\/45096dd1-6f64-4f86-937f-711a1054d436"
-            },
-            "status": null,
-            "top": "165",
-            "left": "475",
-            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "group": null,
-            "uuid": "0442c07a-96d8-4d43-a984-4def4fb61db1"
         },
         {
             "@type": "WorkflowStep",
@@ -343,10 +343,10 @@
             "arguments": {
                 "conditions": [
                     {
-                        "option": "Set Acknowledge Date",
+                        "option": "Set Acknowledge SLA Status",
                         "step_iri": "\/api\/3\/workflow_steps\/8386bc90-78a0-46b2-b33f-655c697b24d2",
                         "condition": "{{ (vars.input.records[0].status.itemValue == vars.steps.Get_SLA_Details.sla_time_list.alertAckTrackedOn) or (vars.input.records[0].ackSlaStatus.itemValue == 'Awaiting Action' and vars.input.records[0].status.itemValue == 'Closed') }}",
-                        "step_name": "Check Acknowledge SLA Status"
+                        "step_name": "Is Acknowledge SLA Met"
                     },
                     {
                         "option": "Recalculate Acknowledge SLA",
@@ -408,16 +408,6 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Copy 1 of Recalculate Acknowledge SLA -> Copy  of Resume Acknowledge SLA 1",
-            "targetStep": "\/api\/3\/workflow_steps\/371bbc26-069a-4961-b7f6-1744494510cc",
-            "sourceStep": "\/api\/3\/workflow_steps\/084b0d14-e47e-4cc5-9a12-79bbd46d5014",
-            "label": null,
-            "isExecuted": false,
-            "group": null,
-            "uuid": "da7784ba-0b93-454d-b3d3-4333674b46db"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Get SLA Details -> Is Pending",
             "targetStep": "\/api\/3\/workflow_steps\/4b47d563-2b8e-47c0-aee6-8c47bb23db0c",
             "sourceStep": "\/api\/3\/workflow_steps\/0442c07a-96d8-4d43-a984-4def4fb61db1",
@@ -438,6 +428,16 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Recalculate Acknowledge SLA -> Resume Acknowledge SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/371bbc26-069a-4961-b7f6-1744494510cc",
+            "sourceStep": "\/api\/3\/workflow_steps\/084b0d14-e47e-4cc5-9a12-79bbd46d5014",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "6444b87f-041b-4dc6-beaa-d574c558732f"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Start -> Get SLA Details",
             "targetStep": "\/api\/3\/workflow_steps\/0442c07a-96d8-4d43-a984-4def4fb61db1",
             "sourceStep": "\/api\/3\/workflow_steps\/0968f9df-27b7-4720-acd9-4b48223ffd6f",
@@ -451,7 +451,7 @@
             "name": "Status Check -> Check Acknowledge SLA Status",
             "targetStep": "\/api\/3\/workflow_steps\/8386bc90-78a0-46b2-b33f-655c697b24d2",
             "sourceStep": "\/api\/3\/workflow_steps\/b3e774bc-69e1-4067-a78e-e1d01f59da2a",
-            "label": "Set Acknowledge Date",
+            "label": "Set Acknowledge SLA Status",
             "isExecuted": false,
             "group": null,
             "uuid": "167fbf5b-1bbd-4807-b088-1357dab4afad"

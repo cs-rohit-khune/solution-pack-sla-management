@@ -43,7 +43,29 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Check Response SLA Status",
+            "name": "Get SLA Details",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "tenant_iri": "{{vars.input.records[0].tenant['@id'] | ternary(vars.input.records[0].tenant['@id'], none)}}",
+                    "inc_severity": "{{vars.input.records[0].severity.itemValue}}"
+                },
+                "apply_async": false,
+                "step_variables": {
+                    "sla_time_list": "{{vars.result.sla_time_list}}"
+                },
+                "workflowReference": "\/api\/3\/workflows\/45096dd1-6f64-4f86-937f-711a1054d436"
+            },
+            "status": null,
+            "top": "165",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "3d5c1bc9-76f9-4924-b6a5-1a15eaf79637"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Is Response SLA Met",
             "description": null,
             "arguments": {
                 "conditions": [
@@ -71,28 +93,6 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get SLA Details",
-            "description": null,
-            "arguments": {
-                "arguments": {
-                    "tenant_iri": "{{vars.input.records[0].tenant['@id'] | ternary(vars.input.records[0].tenant['@id'], none)}}",
-                    "inc_severity": "{{vars.input.records[0].severity.itemValue}}"
-                },
-                "apply_async": false,
-                "step_variables": {
-                    "sla_time_list": "{{vars.result.sla_time_list}}"
-                },
-                "workflowReference": "\/api\/3\/workflows\/45096dd1-6f64-4f86-937f-711a1054d436"
-            },
-            "status": null,
-            "top": "165",
-            "left": "475",
-            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "group": null,
-            "uuid": "3d5c1bc9-76f9-4924-b6a5-1a15eaf79637"
-        },
-        {
-            "@type": "WorkflowStep",
             "name": "Is Response SLA Paused",
             "description": null,
             "arguments": {
@@ -104,7 +104,7 @@
                         "step_name": "Calculate Time Left for Response before Pausing"
                     },
                     {
-                        "option": "Check Status for Response SLA",
+                        "option": "Not Pause",
                         "default": true,
                         "step_iri": "\/api\/3\/workflow_steps\/26872269-b541-4c95-bfd5-9b9f47aab7a1",
                         "step_name": "Status Check for Response SLA"
@@ -329,7 +329,7 @@
             "arguments": {
                 "conditions": [
                     {
-                        "option": "Check SLA",
+                        "option": "Set Response SLA Status",
                         "step_iri": "\/api\/3\/workflow_steps\/9a1d01ab-9e97-49e9-ac44-90c568334133",
                         "condition": "{{ vars.input.records[0].status.itemValue == vars.sla_time_list.alertResTrackedOn }}",
                         "step_name": "Check Response SLA Status"
@@ -340,7 +340,8 @@
                         "step_iri": "\/api\/3\/workflow_steps\/2ff19b76-9de1-4b2f-8f87-3e10595e9285",
                         "step_name": "Recalculate Response SLA"
                     }
-                ]
+                ],
+                "step_variables": []
             },
             "status": null,
             "top": "435",
@@ -376,7 +377,7 @@
             "name": "Check Current Status To Pause SLA -> Status Check for Response SLA",
             "targetStep": "\/api\/3\/workflow_steps\/26872269-b541-4c95-bfd5-9b9f47aab7a1",
             "sourceStep": "\/api\/3\/workflow_steps\/991dd833-6918-41a0-bd5a-a113fe1c1ce6",
-            "label": "Check Status for Response SLA",
+            "label": "Not Pause",
             "isExecuted": false,
             "group": null,
             "uuid": "56b69230-cddb-47af-8317-2965874cadd0"
@@ -436,7 +437,7 @@
             "name": "Status Check for Response SLA -> Check Response SLA Status",
             "targetStep": "\/api\/3\/workflow_steps\/9a1d01ab-9e97-49e9-ac44-90c568334133",
             "sourceStep": "\/api\/3\/workflow_steps\/26872269-b541-4c95-bfd5-9b9f47aab7a1",
-            "label": "Check SLA",
+            "label": "Set Response SLA Status",
             "isExecuted": false,
             "group": null,
             "uuid": "61559d8e-cc13-4e99-af17-1c65d80c62bb"
