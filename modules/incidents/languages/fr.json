@@ -5,7 +5,7 @@
             "PLURAL_NAME": "Incidents"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "Date de reprise du SLA de réponse"
+            "RESPONSESLARESUMEDATE": "Date de reprise du SLA de réponse"
         }
     }
 }

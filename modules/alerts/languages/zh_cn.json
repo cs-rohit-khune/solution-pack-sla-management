@@ -5,7 +5,7 @@
             "PLURAL_NAME": "警报"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "响应 SLA 取消暂停日期"
+            "RESPONSESLARESUMEDATE": "响应SLA恢复日期"
         }
     }
 }

@@ -5,7 +5,7 @@
             "PLURAL_NAME": "알림들"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "응답 SLA 일시 정지 해제 날짜"
+            "RESPONSESLARESUMEDATE": "응답 SLA 재개 날짜"
         }
     }
 }

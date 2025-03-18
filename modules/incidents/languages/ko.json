@@ -5,7 +5,7 @@
             "PLURAL_NAME": "사건들"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "응답 SLA 재개 날짜"
+            "RESPONSESLARESUMEDATE": "응답 SLA 재개 날짜"
         }
     }
 }

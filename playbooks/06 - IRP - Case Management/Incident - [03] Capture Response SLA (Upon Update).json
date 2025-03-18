@@ -25,7 +25,7 @@
                 "params": {
                     "sla_time": "{% if vars.input.records[0].incRemainingRespSLA%}{{vars.input.records[0].incRemainingRespSLA}}{%else%}{{vars.sla_time_list.incResTime}}{%endif%}",
                     "end_datetime": "{{vars.input.records[0].modifyDate}}",
-                    "start_datetime": "{% if vars.prev_status == 'In Progress' and vars.input.records[0].responseSLAUnpausedDate is none %}{{vars.input.records[0].ackDate - (vars.input.records[0].ackDate % 60)}}{% elif vars.previous.data.responseSLAUnpausedDate %}{{vars.previous.data.responseSLAUnpausedDate - (vars.previous.data.responseSLAUnpausedDate % 60)}}{% else %}{{vars.input.records[0].createDate - (vars.input.records[0].createDate % 60)}}{% endif %}"
+                    "start_datetime": "{% if vars.prev_status == 'In Progress' and vars.input.records[0].responseSLAResumeDate is none %}{{vars.input.records[0].ackDate - (vars.input.records[0].ackDate % 60)}}{% elif vars.previous.data.responseSLAResumeDate %}{{vars.previous.data.responseSLAResumeDate - (vars.previous.data.responseSLAResumeDate % 60)}}{% else %}{{vars.input.records[0].createDate - (vars.input.records[0].createDate % 60)}}{% endif %}"
                 },
                 "version": "2.1.0",
                 "connector": "slacalculator",
@@ -184,7 +184,7 @@
                 "resource": {
                     "resSla": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818",
                     "resDueBy": "{{vars.steps.Recalculate_Response_SLA.data['sla_due_date_timestamp']}}",
-                    "responseSLAUnpausedDate": "{% if vars.is_unpaused %}{{globalVars.Current_Date}}{% endif %}"
+                    "responseSLAResumeDate": "{% if vars.is_unpaused %}{{globalVars.Current_Date}}{% endif %}"
                 },
                 "_showJson": false,
                 "operation": "Append",

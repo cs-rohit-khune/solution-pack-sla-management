@@ -8,7 +8,7 @@
         {
             "@type": "AttributeMetadata",
             "type": "integer",
-            "name": "responseSLAUnpausedDate",
+            "name": "responseSLAResumeDate",
             "length": null,
             "formType": "datetime",
             "dataSource": null,
@@ -43,9 +43,9 @@
             "unique": false,
             "recommend": false,
             "skipSerialization": false,
-            "displayName": "{{ responseSLAUnpausedDate }}",
+            "displayName": "{{ responseSLAResumeDate }}",
             "descriptions": {
-                "singular": "Response SLA Unpaused Date"
+                "singular": "Response SLA Resume Date"
             }
         }
     ],

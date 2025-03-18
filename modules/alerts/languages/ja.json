@@ -5,7 +5,7 @@
             "PLURAL_NAME": "アラート"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "対応SLA再開日"
+            "RESPONSESLARESUMEDATE": "対応SLA再開日"
         }
     }
 }

@@ -5,7 +5,7 @@
             "PLURAL_NAME": "事件"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "响应SLA取消暂停日期"
+            "RESPONSESLARESUMEDATE": "响应SLA恢复日期"
         }
     }
 }

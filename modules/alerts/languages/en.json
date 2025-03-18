@@ -5,7 +5,7 @@
             "PLURAL_NAME": "Alerts"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "Response SLA Unpaused Date"
+            "RESPONSESLARESUMEDATE": "Response SLA Resume Date"
         }
     }
 }

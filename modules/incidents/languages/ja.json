@@ -5,7 +5,7 @@
             "PLURAL_NAME": "インシデント一覧"
         },
         "FIELDS": {
-            "RESPONSESLAUNPAUSEDDATE": "対応SLA再開日"
+            "RESPONSESLARESUMEDATE": "応答SLA再開日"
         }
     }
 }
