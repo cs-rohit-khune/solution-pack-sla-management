@@ -397,7 +397,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Check Current Status To Pause SLA -> Status Check for Ack SLA",
+            "name": "Check Current Status To Pause SLA -> Status Check for Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/9fd6895c-66ab-4855-8554-f929009b3d4d",
             "sourceStep": "\/api\/3\/workflow_steps\/25606b7b-c97b-4be6-8b56-55b9b6cbddbd",
             "label": "Check Status for Response SLA",
@@ -417,7 +417,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Recalculate Ack SLA -> Resume Ack SLA",
+            "name": "Recalculate Acknowledge SLA -> Resume Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/34b205ba-89d0-4bd9-8767-c3b9bd3a08fa",
             "sourceStep": "\/api\/3\/workflow_steps\/5cd621a4-48cf-4640-be70-0ab64384a93b",
             "label": null,
@@ -437,7 +437,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Status Check for Ack SLA -> Check Acknowledge SLA Status",
+            "name": "Status Check for Acknowledge SLA -> Check Acknowledge SLA Status",
             "targetStep": "\/api\/3\/workflow_steps\/a4bb2298-e229-4712-bff2-c7d9caaf1ccb",
             "sourceStep": "\/api\/3\/workflow_steps\/9fd6895c-66ab-4855-8554-f929009b3d4d",
             "label": "Set Response Date",
@@ -447,7 +447,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Status Check for Ack SLA -> Recalculate Ack SLA",
+            "name": "Status Check for Acknowledge SLA -> Recalculate Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/5cd621a4-48cf-4640-be70-0ab64384a93b",
             "sourceStep": "\/api\/3\/workflow_steps\/9fd6895c-66ab-4855-8554-f929009b3d4d",
             "label": "Recalculate Response SLA",

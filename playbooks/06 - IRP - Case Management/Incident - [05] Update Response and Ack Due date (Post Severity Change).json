@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Incident - [05] Update Response and Ack Due date (Post Severity Change)",
+    "name": "Incident - [05] Update Response and Acknowledge Due date (Post Severity Change)",
     "aliasName": null,
     "tag": null,
     "description": "Update an incident's acknowledgement due date and response due date following a change in severity.",
@@ -25,13 +25,13 @@
                         "option": "Reset SLA",
                         "step_iri": "\/api\/3\/workflow_steps\/77a22a5f-a0c2-4bf2-a0e2-c3e10511ace6",
                         "condition": "{{ globalVars.Reset_SLA }}",
-                        "step_name": "Reset Ack SLA"
+                        "step_name": "Reset Acknowledge SLA"
                     },
                     {
                         "option": "Set SLA",
                         "default": true,
                         "step_iri": "\/api\/3\/workflow_steps\/7a32aa12-cba1-4c0e-b030-92fb0aaa5621",
-                        "step_name": "Set Ack SLA"
+                        "step_name": "Set Acknowledge SLA"
                     }
                 ]
             },
@@ -85,7 +85,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Reset Ack SLA",
+            "name": "Reset Acknowledge SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -111,7 +111,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Reset Resp SLA",
+            "name": "Reset Response SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -137,7 +137,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Set Ack SLA",
+            "name": "Set Acknowledge SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -163,7 +163,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Set Resp SLA",
+            "name": "Set Response SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -244,7 +244,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update Reset Ack SLA",
+            "name": "Update Reset Acknowledge SLA",
             "description": null,
             "arguments": {
                 "when": "{{(vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"Awaiting Action\", \"itemValue\")) or vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"NA\", \"itemValue\"))) and (vars.sla_time_list.incAckTime | int > 0) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incAckTrackedOn) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incResTrackedOn)}}",
@@ -302,7 +302,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update Set Ack SLA",
+            "name": "Update Set Acknowledge SLA",
             "description": null,
             "arguments": {
                 "when": "{{(vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"Awaiting Action\", \"itemValue\")) or vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"NA\", \"itemValue\"))) and (vars.sla_time_list.incAckTime | int > 0) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incAckTrackedOn) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incResTrackedOn)}}",
@@ -331,7 +331,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update Set Resp SLA",
+            "name": "Update Set Response SLA",
             "description": null,
             "arguments": {
                 "when": "{{(vars.input.records[0].resSla.itemValue == (\"SLAState\" | picklist(\"Awaiting Action\", \"itemValue\"))or vars.input.records[0].resSla.itemValue == (\"SLAState\" | picklist(\"NA\", \"itemValue\"))) and (vars.sla_time_list.incResTime | int > 0) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incResTrackedOn)}}",
@@ -389,7 +389,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Check SLA Reset Flag -> Reset Ack SLA",
+            "name": "Check SLA Reset Flag -> Reset Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/77a22a5f-a0c2-4bf2-a0e2-c3e10511ace6",
             "sourceStep": "\/api\/3\/workflow_steps\/dba70954-cf03-4cfa-8161-112d123ea2d4",
             "label": "Reset SLA",
@@ -399,7 +399,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Check SLA Reset Flag -> Set Ack SLA",
+            "name": "Check SLA Reset Flag -> Set Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/7a32aa12-cba1-4c0e-b030-92fb0aaa5621",
             "sourceStep": "\/api\/3\/workflow_steps\/dba70954-cf03-4cfa-8161-112d123ea2d4",
             "label": "Set SLA",
@@ -419,7 +419,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Reset Ack SLA -> Update SLA",
+            "name": "Reset Acknowledge SLA -> Update SLA",
             "targetStep": "\/api\/3\/workflow_steps\/ab89bbee-4eea-4eb5-af32-0a804f81ed2d",
             "sourceStep": "\/api\/3\/workflow_steps\/77a22a5f-a0c2-4bf2-a0e2-c3e10511ace6",
             "label": null,
@@ -429,7 +429,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Reset Resp SLA -> Copy  of Update Reset Ack SLA",
+            "name": "Reset Response SLA -> Copy  of Update Reset Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/97e23efa-dc91-4d2f-8897-b3d0862f05a0",
             "sourceStep": "\/api\/3\/workflow_steps\/dddd9017-05b3-47b4-b035-833b6ed43e8f",
             "label": null,
@@ -439,7 +439,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Set Ack SLA -> Set SLA",
+            "name": "Set Acknowledge SLA -> Set SLA",
             "targetStep": "\/api\/3\/workflow_steps\/ad9e0055-fa25-430a-9e61-daa884090c06",
             "sourceStep": "\/api\/3\/workflow_steps\/7a32aa12-cba1-4c0e-b030-92fb0aaa5621",
             "label": null,
@@ -449,7 +449,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Set Resp SLA -> Copy  of Update Set Ack SLA",
+            "name": "Set Response SLA -> Copy  of Update Set Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/ac414e32-265f-434a-91a8-fee47e7da71f",
             "sourceStep": "\/api\/3\/workflow_steps\/84f7da84-5b88-4944-b2b0-0453060c18b5",
             "label": null,
@@ -459,7 +459,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Set SLA -> Set Resp SLA",
+            "name": "Set SLA -> Set Response SLA",
             "targetStep": "\/api\/3\/workflow_steps\/84f7da84-5b88-4944-b2b0-0453060c18b5",
             "sourceStep": "\/api\/3\/workflow_steps\/ad9e0055-fa25-430a-9e61-daa884090c06",
             "label": null,
@@ -479,7 +479,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Update SLA -> Reset Resp SLA",
+            "name": "Update SLA -> Reset Response SLA",
             "targetStep": "\/api\/3\/workflow_steps\/dddd9017-05b3-47b4-b035-833b6ed43e8f",
             "sourceStep": "\/api\/3\/workflow_steps\/ab89bbee-4eea-4eb5-af32-0a804f81ed2d",
             "label": null,

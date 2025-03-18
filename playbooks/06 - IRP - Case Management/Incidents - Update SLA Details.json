@@ -22,7 +22,7 @@
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Calculate Ack SLA",
+            "name": "Calculate Acknowledge SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -48,7 +48,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Calculate Resp SLA",
+            "name": "Calculate Response SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -209,7 +209,7 @@
                         "option": "SLA SET",
                         "step_iri": "\/api\/3\/workflow_steps\/b773728a-77a4-4c46-878b-b900555ce197",
                         "condition": "{{ vars.sla_time_list | length > 0 }}",
-                        "step_name": "Calculate Ack SLA"
+                        "step_name": "Calculate Acknowledge SLA"
                     },
                     {
                         "option": "SLA Not Set",
@@ -230,7 +230,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate ACK SLA -> Calculate Resp SLA",
+            "name": "Calculate ACK SLA -> Calculate Response SLA",
             "targetStep": "\/api\/3\/workflow_steps\/832654c9-6fc8-4fda-8da2-87164c9a8bc0",
             "sourceStep": "\/api\/3\/workflow_steps\/b773728a-77a4-4c46-878b-b900555ce197",
             "label": null,
@@ -240,7 +240,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate Resp SLA -> Update SLA",
+            "name": "Calculate Response SLA -> Update SLA",
             "targetStep": "\/api\/3\/workflow_steps\/4ad0e77d-6233-4e41-a43a-ea3ea7af6e8b",
             "sourceStep": "\/api\/3\/workflow_steps\/832654c9-6fc8-4fda-8da2-87164c9a8bc0",
             "label": null,

@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Incident - [06] Check for Ack SLA violations",
+    "name": "Incident - [06] Check for Acknowledge SLA violations",
     "aliasName": null,
     "tag": "#Schedule  #system",
     "description": "Notifies users of violation of Acknowledgement SLA.",

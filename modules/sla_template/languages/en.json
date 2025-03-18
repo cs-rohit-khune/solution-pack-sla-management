@@ -7,14 +7,14 @@
         "FIELDS": {
             "INCPAUSESLAON": "Pause Incident SLA On",
             "ALTPAUSESLAON": "Pause Alert SLA On",
-            "ACKSLATIME": "Incident Ack Time",
+            "ACKSLATIME": "Incident Acknowledge Time",
             "INCSEVERITY": "Severity",
             "RESTIME": "Incident Response Time",
-            "SLATRACKEDON": "Incident Ack SLA Tracked on",
+            "SLATRACKEDON": "Incident Acknowledge SLA Tracked on",
             "RESSLATRACKEDON": "Incident Response SLA Tracked on",
-            "ALERTACKTIME": "Alert Ack Time",
+            "ALERTACKTIME": "Alert Acknowledge Time",
             "ALERTRESTIME": "Alert Response Time",
-            "ALERTACKTRACKEDON": "Alert Ack Tracked On",
+            "ALERTACKTRACKEDON": "Alert Acknowledge Tracked On",
             "ALERTRESTRACKEDON": "Alert Response Tracked On"
         }
     }
