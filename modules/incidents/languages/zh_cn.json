@@ -1,0 +1,11 @@
+{
+    "INCIDENTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "事件",
+            "PLURAL_NAME": "事件"
+        },
+        "FIELDS": {
+            "RESPONSESLARESUMEDATE": "响应SLA恢复日期"
+        }
+    }
+}

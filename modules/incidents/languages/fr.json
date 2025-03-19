@@ -1,0 +1,11 @@
+{
+    "INCIDENTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Incident",
+            "PLURAL_NAME": "Incidents"
+        },
+        "FIELDS": {
+            "RESPONSESLARESUMEDATE": "Date de reprise du SLA de réponse"
+        }
+    }
+}

@@ -39,7 +39,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Pause Ack SLA",
+            "name": "Pause Acknowledge SLA",
             "description": null,
             "arguments": {
                 "when": "{{vars.input.records[0].ackSlaStatus.itemValue == \"Awaiting Action\"}}",
@@ -142,7 +142,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Get SLA Details -> Pause Ack SLA",
+            "name": "Get SLA Details -> Pause Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/1ce78c08-1103-401f-9710-89fd97476610",
             "sourceStep": "\/api\/3\/workflow_steps\/55352d8b-22c1-4df3-bea6-3d9ba1642893",
             "label": null,
@@ -152,7 +152,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Pause Ack SLA -> Copy  of Pause Ack SLA",
+            "name": "Pause Acknowledge SLA -> Copy  of Pause Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/d5d38ed9-424c-4319-8085-121fd5abd598",
             "sourceStep": "\/api\/3\/workflow_steps\/1ce78c08-1103-401f-9710-89fd97476610",
             "label": null,

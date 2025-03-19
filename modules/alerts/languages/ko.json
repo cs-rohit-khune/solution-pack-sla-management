@@ -1,0 +1,11 @@
+{
+    "ALERTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "알림",
+            "PLURAL_NAME": "알림들"
+        },
+        "FIELDS": {
+            "RESPONSESLARESUMEDATE": "응답 SLA 재개 날짜"
+        }
+    }
+}

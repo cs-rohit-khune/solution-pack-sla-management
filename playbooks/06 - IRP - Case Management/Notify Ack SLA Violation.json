@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Notify Ack SLA Violation",
+    "name": "Notify Acknowledge SLA Violation",
     "aliasName": null,
     "tag": "#Subroutine #system",
     "description": "Notify user for Acknowledgement SLA violation",

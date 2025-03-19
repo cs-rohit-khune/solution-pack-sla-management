@@ -68,7 +68,7 @@
             "uuid": "104dc9b2-c586-46c4-8f43-2de0c38f59b9",
             "displayName": "{{ alertAckTime }}",
             "descriptions": {
-                "singular": "Alert Ack Time"
+                "singular": "Alert Acknowledge Time"
             }
         },
         {
@@ -374,7 +374,7 @@
             "uuid": "2467ec9f-0682-4b40-a48e-b8a2cd63d545",
             "displayName": "{{ ackSlaTime }}",
             "descriptions": {
-                "singular": "Incident Ack Time"
+                "singular": "Incident Acknowledge Time"
             }
         },
         {
@@ -506,7 +506,7 @@
             "uuid": "998ce90a-edb6-4434-95e8-91f3eff79e72",
             "displayName": "{{ slaTrackedOn }}",
             "descriptions": {
-                "singular": "Incident Ack SLA Tracked on"
+                "singular": "Incident Acknowledge SLA Tracked on"
             }
         },
         {
@@ -728,7 +728,7 @@
             "uuid": "83d69be9-f08e-435f-8e7c-89442de6995b",
             "displayName": "{{ alertAckTrackedOn }}",
             "descriptions": {
-                "singular": "Alert Ack Tracked On"
+                "singular": "Alert Acknowledge Tracked On"
             }
         },
         {

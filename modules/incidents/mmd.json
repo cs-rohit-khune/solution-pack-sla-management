@@ -1,0 +1,54 @@
+{
+    "descriptions": {
+        "plural": "Incidents",
+        "singular": "Incident"
+    },
+    "type": "incidents",
+    "attributes": [
+        {
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "responseSLAResumeDate",
+            "length": null,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "skipSerialization": false,
+            "displayName": "{{ responseSLAResumeDate }}",
+            "descriptions": {
+                "singular": "Response SLA Resume Date"
+            }
+        }
+    ],
+    "tableName": "incidents",
+    "displayName": "{{ name }}"
+}

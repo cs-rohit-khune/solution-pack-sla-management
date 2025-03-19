@@ -1,0 +1,11 @@
+{
+    "ALERTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "警报",
+            "PLURAL_NAME": "警报"
+        },
+        "FIELDS": {
+            "RESPONSESLARESUMEDATE": "响应SLA恢复日期"
+        }
+    }
+}

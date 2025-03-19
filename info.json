@@ -27,6 +27,14 @@
     "date": "2024-05-24T11:45:39+00:00",
     "contents": {
         "modules": {
+            "alerts": {
+                "name": "Alerts",
+                "apiName": "alerts"
+            },
+            "incidents": {
+                "name": "Incidents",
+                "apiName": "incidents"
+            },
             "sla_template": {
                 "name": "SLA Templates",
                 "apiName": "sla_template"

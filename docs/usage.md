@@ -33,7 +33,7 @@ To view or edit existing SLA templates:
 
         Pause SLAs are tracked on change of incident status to _`Awaiting`_ and alert status to _`Pending`_.
 
-    - **Incident Ack Time**/**Alert Ack Time**: This field displays the time to acknowledge an incident or alert and is set to **20** minutes.
+    - **Incident Acknowledge Time**/**Alert Acknowledge Time**: This field displays the time to acknowledge an incident or alert and is set to **20** minutes.
 
         Acknowledgment SLAs are tracked on change of incident status to _`In Progress`_ and alert status to _`Investigating`_.
     
@@ -50,7 +50,7 @@ To view or edit existing SLA templates:
 
 ## Viewing SLAs on a record
 
-You can view the SLA values in the detail-view of an alert or incident record. The detail-view displays information such as *Ack Due Date*, *Ack Date*, *Ack SLA*, and *Response Due Date* to track if the SLAs have been met.
+You can view the SLA values in the detail-view of an alert or incident record. The detail-view displays information such as *Acknowledge Due Date*, *Acknowledge Date*, *Acknowledge SLA*, and *Response Due Date* to track if the SLAs have been met.
 
 1. Click **Automation** ![chevron right icon](./res/icon-chevron-right.svg) **SLA Templates** from the left navigation bar.
 
@@ -58,7 +58,7 @@ You can view the SLA values in the detail-view of an alert or incident record. T
 
     The following example image displays an alert with SLA timers. Notice the following:
 
-    - The **Ack SLA** for an alert with **High** severity has been **Met**
+    - The **Acknowledge SLA** for an alert with **High** severity has been **Met**
     - The response SLA timer is running at 23 minutes 18 seconds
     - The **Response SLA** it is set to **Awaiting Action**
     - The status of this alert is set to **Investigating** which is why the acknowledgment SLA is met

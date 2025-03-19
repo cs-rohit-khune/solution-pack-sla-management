@@ -1,0 +1,11 @@
+{
+    "ALERTS": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Alert",
+            "PLURAL_NAME": "Alerts"
+        },
+        "FIELDS": {
+            "RESPONSESLARESUMEDATE": "Response SLA Resume Date"
+        }
+    }
+}

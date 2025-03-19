@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Alert - [02] Capture Ack SLA (Upon Update)",
+    "name": "Alert - [02] Capture Acknowledge SLA (Upon Update)",
     "aliasName": null,
     "tag": null,
     "description": "Updates the alert's acknowledgement date and SLA Status based on when the alert status is changed.",
@@ -17,7 +17,7 @@
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Calculate Time Left for Ack before Pausing",
+            "name": "Calculate Time Left for Acknowledge before Pausing",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -25,9 +25,9 @@
                 "params": {
                     "sla_time": "{{vars.sla_time_list.alertAckTime}}",
                     "end_datetime": "{{vars.input.records[0].modifyDate}}",
-                    "start_datetime": "{{vars.input.records[0].createDate}}"
+                    "start_datetime": "{{vars.input.records[0].createDate - (vars.input.records[0].createDate % 60)}}"
                 },
-                "version": "2.0.0",
+                "version": "2.1.0",
                 "connector": "slacalculator",
                 "operation": "calculate_elapsed_time",
                 "operationTitle": "Calculate Elapsed SLA Time",
@@ -36,63 +36,10 @@
             },
             "status": null,
             "top": "435",
-            "left": "1175",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
             "uuid": "6eb2842d-d208-467b-ab5a-ee0843037d20"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Check Acknowledge SLA Status",
-            "description": null,
-            "arguments": {
-                "conditions": [
-                    {
-                        "option": "Missed",
-                        "step_iri": "\/api\/3\/workflow_steps\/a7e1b006-d4af-4e6d-ad37-76940f2b490f",
-                        "condition": "{{ vars.input.records[0].modifyDate > vars.input.records[0].dueBy }}"
-                    },
-                    {
-                        "option": "Met",
-                        "step_iri": "\/api\/3\/workflow_steps\/c73720f8-10c9-46d7-ba3b-7da00c99117f",
-                        "condition": "{{ vars.input.records[0].modifyDate <  vars.input.records[0].dueBy }}"
-                    }
-                ]
-            },
-            "status": null,
-            "top": "570",
-            "left": "300",
-            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "group": null,
-            "uuid": "8386bc90-78a0-46b2-b33f-655c697b24d2"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Check Current Status To Pause SLA",
-            "description": null,
-            "arguments": {
-                "conditions": [
-                    {
-                        "option": "Pause SLA",
-                        "step_iri": "\/api\/3\/workflow_steps\/6eb2842d-d208-467b-ab5a-ee0843037d20",
-                        "condition": "{{ (vars.input.records[0].status.itemValue in vars.sla_time_list.altPauseSLAOn) or (vars.input.records[0].status.itemValue == vars.sla_time_list.altPauseSLAOn) }}",
-                        "step_name": "Calculate Elapsed Time before Pausing"
-                    },
-                    {
-                        "option": "Check Status for Ack SLA",
-                        "default": true,
-                        "step_iri": "\/api\/3\/workflow_steps\/b3e774bc-69e1-4067-a78e-e1d01f59da2a",
-                        "step_name": "Status Check for Ack SLA"
-                    }
-                ],
-                "step_variables": []
-            },
-            "status": null,
-            "top": "300",
-            "left": "650",
-            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "group": null,
-            "uuid": "4b47d563-2b8e-47c0-aee6-8c47bb23db0c"
         },
         {
             "@type": "WorkflowStep",
@@ -113,14 +60,70 @@
             },
             "status": null,
             "top": "165",
-            "left": "650",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
             "group": null,
             "uuid": "0442c07a-96d8-4d43-a984-4def4fb61db1"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Pause Ack SLA",
+            "name": "Is Acknowledge SLA Met",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Missed",
+                        "step_iri": "\/api\/3\/workflow_steps\/a7e1b006-d4af-4e6d-ad37-76940f2b490f",
+                        "condition": "{{ vars.input.records[0].modifyDate > vars.input.records[0].dueBy }}",
+                        "step_name": "Set Acknowledge SLA as Missed"
+                    },
+                    {
+                        "option": "Met",
+                        "step_iri": "\/api\/3\/workflow_steps\/c73720f8-10c9-46d7-ba3b-7da00c99117f",
+                        "condition": "{{ vars.input.records[0].modifyDate <  vars.input.records[0].dueBy }}",
+                        "step_name": "Set Acknowledge SLA as Met"
+                    }
+                ],
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "group": null,
+            "uuid": "8386bc90-78a0-46b2-b33f-655c697b24d2"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Is Acknowledge SLA Paused",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Paused",
+                        "step_iri": "\/api\/3\/workflow_steps\/6eb2842d-d208-467b-ab5a-ee0843037d20",
+                        "condition": "{{ (vars.input.records[0].status.itemValue in vars.sla_time_list.altPauseSLAOn) or (vars.input.records[0].status.itemValue == vars.sla_time_list.altPauseSLAOn) }}",
+                        "step_name": "Calculate Time Left for Acknowledge before Pausing"
+                    },
+                    {
+                        "option": "Not Paused",
+                        "default": true,
+                        "step_iri": "\/api\/3\/workflow_steps\/b3e774bc-69e1-4067-a78e-e1d01f59da2a",
+                        "step_name": "Status Check for Acknowledge SLA"
+                    }
+                ],
+                "step_variables": []
+            },
+            "status": null,
+            "top": "300",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "group": null,
+            "uuid": "4b47d563-2b8e-47c0-aee6-8c47bb23db0c"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Pause Acknowledge SLA",
             "description": null,
             "arguments": {
                 "when": "{{vars.input.records[0].ackSlaStatus.itemValue == \"Awaiting Action\"}}",
@@ -142,14 +145,14 @@
             },
             "status": null,
             "top": "570",
-            "left": "1175",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "0cf46ca0-c4d3-4682-9e9a-7b93fe811fdc"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Recalculate Ack SLA",
+            "name": "Recalculate Acknowledge SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -168,14 +171,14 @@
             },
             "status": null,
             "top": "570",
-            "left": "825",
+            "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
             "uuid": "084b0d14-e47e-4cc5-9a12-79bbd46d5014"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Resume Ack SLA",
+            "name": "Resume Acknowledge SLA",
             "description": null,
             "arguments": {
                 "when": "{{(vars.input.records[0].ackSlaStatus.itemValue == \"Awaiting Action\" or vars.input.records[0].ackSlaStatus.itemValue == \"Paused\" ) and vars.input.records[0].status.itemValue != \"Closed\"}}",
@@ -195,7 +198,7 @@
             },
             "status": null,
             "top": "705",
-            "left": "825",
+            "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "371bbc26-069a-4961-b7f6-1744494510cc"
@@ -233,7 +236,7 @@
             },
             "status": null,
             "top": "705",
-            "left": "125",
+            "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "c73720f8-10c9-46d7-ba3b-7da00c99117f"
@@ -270,7 +273,7 @@
             },
             "status": null,
             "top": "705",
-            "left": "475",
+            "left": "650",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "a7e1b006-d4af-4e6d-ad37-76940f2b490f"
@@ -328,35 +331,35 @@
             },
             "status": null,
             "top": "30",
-            "left": "650",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
             "group": null,
             "uuid": "0968f9df-27b7-4720-acd9-4b48223ffd6f"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Status Check for Ack SLA",
+            "name": "Status Check for Acknowledge SLA",
             "description": null,
             "arguments": {
                 "conditions": [
                     {
-                        "option": "Set Ack Date",
+                        "option": "Set Acknowledge SLA Status",
                         "step_iri": "\/api\/3\/workflow_steps\/8386bc90-78a0-46b2-b33f-655c697b24d2",
-                        "condition": "{{ (vars.input.records[0].status.itemValue == vars.steps.Get_SLA_Details.sla_time_list.alertAackTrackedOn) or (vars.input.records[0].ackSlaStatus.itemValue == 'Awaiting Action' and vars.input.records[0].status.itemValue == 'Closed') }}",
-                        "step_name": "Check Acknowledge SLA Status"
+                        "condition": "{{ (vars.input.records[0].status.itemValue == vars.steps.Get_SLA_Details.sla_time_list.alertAckTrackedOn) or (vars.input.records[0].ackSlaStatus.itemValue == 'Awaiting Action' and vars.input.records[0].status.itemValue == 'Closed') }}",
+                        "step_name": "Is Acknowledge SLA Met"
                     },
                     {
-                        "option": "Recalculate Ack SLA",
+                        "option": "Recalculate Acknowledge SLA",
                         "default": true,
                         "step_iri": "\/api\/3\/workflow_steps\/084b0d14-e47e-4cc5-9a12-79bbd46d5014",
-                        "step_name": "Recalculate Ack SLA"
+                        "step_name": "Recalculate Acknowledge SLA"
                     }
                 ],
                 "step_variables": []
             },
             "status": null,
             "top": "435",
-            "left": "475",
+            "left": "650",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
             "group": null,
             "uuid": "b3e774bc-69e1-4067-a78e-e1d01f59da2a"
@@ -365,7 +368,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate Elapsed Time before Pausing -> Pause Ack SLA",
+            "name": "Calculate Elapsed Time before Pausing -> Pause Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/0cf46ca0-c4d3-4682-9e9a-7b93fe811fdc",
             "sourceStep": "\/api\/3\/workflow_steps\/6eb2842d-d208-467b-ab5a-ee0843037d20",
             "label": null,
@@ -398,20 +401,10 @@
             "name": "Check Current Status To Pause SLA -> Calculate Elapsed Time before Pausing",
             "targetStep": "\/api\/3\/workflow_steps\/6eb2842d-d208-467b-ab5a-ee0843037d20",
             "sourceStep": "\/api\/3\/workflow_steps\/4b47d563-2b8e-47c0-aee6-8c47bb23db0c",
-            "label": "Pause SLA",
+            "label": "Paused",
             "isExecuted": false,
             "group": null,
             "uuid": "49aeeb1e-cfa6-4ab0-ba91-5cae9ffb4ff6"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Copy 1 of Recalculate Ack SLA -> Copy  of Resume Ack SLA 1",
-            "targetStep": "\/api\/3\/workflow_steps\/371bbc26-069a-4961-b7f6-1744494510cc",
-            "sourceStep": "\/api\/3\/workflow_steps\/084b0d14-e47e-4cc5-9a12-79bbd46d5014",
-            "label": null,
-            "isExecuted": false,
-            "group": null,
-            "uuid": "da7784ba-0b93-454d-b3d3-4333674b46db"
         },
         {
             "@type": "WorkflowRoute",
@@ -425,13 +418,23 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Is Pending -> Status Check for Ack SLA",
+            "name": "Is Pending -> Status Check for Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/b3e774bc-69e1-4067-a78e-e1d01f59da2a",
             "sourceStep": "\/api\/3\/workflow_steps\/4b47d563-2b8e-47c0-aee6-8c47bb23db0c",
-            "label": "Check Status for Ack SLA",
+            "label": "Not Paused",
             "isExecuted": false,
             "group": null,
             "uuid": "1af1e2bb-1af8-4228-8432-b32bb1bac35b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Recalculate Acknowledge SLA -> Resume Acknowledge SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/371bbc26-069a-4961-b7f6-1744494510cc",
+            "sourceStep": "\/api\/3\/workflow_steps\/084b0d14-e47e-4cc5-9a12-79bbd46d5014",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "6444b87f-041b-4dc6-beaa-d574c558732f"
         },
         {
             "@type": "WorkflowRoute",
@@ -448,17 +451,17 @@
             "name": "Status Check -> Check Acknowledge SLA Status",
             "targetStep": "\/api\/3\/workflow_steps\/8386bc90-78a0-46b2-b33f-655c697b24d2",
             "sourceStep": "\/api\/3\/workflow_steps\/b3e774bc-69e1-4067-a78e-e1d01f59da2a",
-            "label": "Set Ack Date",
+            "label": "Set Acknowledge SLA Status",
             "isExecuted": false,
             "group": null,
             "uuid": "167fbf5b-1bbd-4807-b088-1357dab4afad"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Status Check for Ack SLA -> Copy 1 of Recalculate Ack SLA",
+            "name": "Status Check for Acknowledge SLA -> Copy 1 of Recalculate Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/084b0d14-e47e-4cc5-9a12-79bbd46d5014",
             "sourceStep": "\/api\/3\/workflow_steps\/b3e774bc-69e1-4067-a78e-e1d01f59da2a",
-            "label": "Recalculate Ack SLA",
+            "label": "Recalculate Acknowledge SLA",
             "isExecuted": false,
             "group": null,
             "uuid": "f36e5493-2ff0-4069-a245-7b78d1d1e654"

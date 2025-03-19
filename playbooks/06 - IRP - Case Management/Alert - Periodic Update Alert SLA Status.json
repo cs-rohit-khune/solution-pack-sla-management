@@ -20,7 +20,7 @@
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Check For Ack Violation",
+            "name": "Check For Acknowledge Violation",
             "description": null,
             "arguments": {
                 "conditions": [
@@ -124,7 +124,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Set Ack SLA Missed",
+            "name": "Set Acknowledge SLA Missed",
             "description": null,
             "arguments": {
                 "resource": {
@@ -217,7 +217,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Check For Ack Violation -> Do Nothing",
+            "name": "Check For Acknowledge Violation -> Do Nothing",
             "targetStep": "\/api\/3\/workflow_steps\/23d1904f-a496-4364-ad83-656f489fda3a",
             "sourceStep": "\/api\/3\/workflow_steps\/7df2c4d4-c662-40f2-95af-d708ceb5526a",
             "label": "Met",
@@ -227,7 +227,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Check For Ack Violation -> Set SLA Missed",
+            "name": "Check For Acknowledge Violation -> Set SLA Missed",
             "targetStep": "\/api\/3\/workflow_steps\/2d8c58e8-5687-4da2-8fe0-2da0b370a688",
             "sourceStep": "\/api\/3\/workflow_steps\/7df2c4d4-c662-40f2-95af-d708ceb5526a",
             "label": "Missed",
@@ -257,7 +257,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Configuration -> Check For Ack Violation",
+            "name": "Configuration -> Check For Acknowledge Violation",
             "targetStep": "\/api\/3\/workflow_steps\/7df2c4d4-c662-40f2-95af-d708ceb5526a",
             "sourceStep": "\/api\/3\/workflow_steps\/9f6e8b37-b1af-47b2-a46d-01dcdc66664c",
             "label": null,

@@ -22,7 +22,7 @@
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Calculate Ack SLA",
+            "name": "Calculate Acknowledge SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -48,7 +48,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Calculate Resp SLA",
+            "name": "Calculate Response SLA",
             "description": null,
             "arguments": {
                 "name": "SLA Calculator",
@@ -213,7 +213,7 @@
                         "option": "SLA SET",
                         "step_iri": "\/api\/3\/workflow_steps\/353ff62e-6109-4836-8f6c-7687cebc8f81",
                         "condition": "{{ vars.sla_time_list | length > 0 }}",
-                        "step_name": "Calculate Ack SLA"
+                        "step_name": "Calculate Acknowledge SLA"
                     },
                     {
                         "option": "SLA Not Set",
@@ -234,7 +234,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate Ack SLA -> Calculate Resp SLA",
+            "name": "Calculate Acknowledge SLA -> Calculate Response SLA",
             "targetStep": "\/api\/3\/workflow_steps\/5f38fc54-a5ea-4f7c-a0e6-dfd8231bf485",
             "sourceStep": "\/api\/3\/workflow_steps\/353ff62e-6109-4836-8f6c-7687cebc8f81",
             "label": null,
@@ -244,7 +244,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate Resp SLA -> Update SLA",
+            "name": "Calculate Response SLA -> Update SLA",
             "targetStep": "\/api\/3\/workflow_steps\/78ebe527-de83-43be-9550-d952b23f26b7",
             "sourceStep": "\/api\/3\/workflow_steps\/5f38fc54-a5ea-4f7c-a0e6-dfd8231bf485",
             "label": null,
@@ -284,7 +284,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Verify SLA Details -> Calculate Ack SLA",
+            "name": "Verify SLA Details -> Calculate Acknowledge SLA",
             "targetStep": "\/api\/3\/workflow_steps\/353ff62e-6109-4836-8f6c-7687cebc8f81",
             "sourceStep": "\/api\/3\/workflow_steps\/6efd9218-5a7c-4580-a9d7-9629ad156817",
             "label": "SLA SET",
