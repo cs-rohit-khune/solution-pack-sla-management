@@ -177,11 +177,11 @@
             "description": null,
             "arguments": {
                 "resource": {
-                    "dueBy": "{%if vars.steps.Calculate_Ack_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Ack_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}",
+                    "dueBy": "{%if vars.steps.Calculate_Acknowledge_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Acknowledge_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}",
                     "__link": {
                         "recordTags": "{% if vars.sla_time_list.defaultSLA %}Default SLA{% endif %}"
                     },
-                    "respDueDate": "{%if vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}",
+                    "respDueDate": "{%if vars.steps.Calculate_Response_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Response_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}",
                     "ackSlaStatus": "{%if vars.sla_time_list.alertAckTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
                     "respSlaStatus": "{%if vars.sla_time_list.alertResTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}"
                 },

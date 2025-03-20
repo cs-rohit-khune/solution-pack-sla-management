@@ -250,7 +250,7 @@
                 "when": "{{(vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"Awaiting Action\", \"itemValue\")) or vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"NA\", \"itemValue\"))) and (vars.sla_time_list.incAckTime | int > 0) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incAckTrackedOn) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incResTrackedOn)}}",
                 "resource": {
                     "slaState": "{%if vars.sla_time_list.incAckTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
-                    "ackDueDate": "{%if vars.sla_time_list.incAckTime | int ==0%} null {% elif vars.steps.Reset_Ack_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Reset_Ack_SLA.data['sla_due_date_timestamp']}}{%else%}{{vars.input.records[0].ackDueDate}} {%endif%}"
+                    "ackDueDate": "{%if vars.sla_time_list.incAckTime | int ==0%} null {% elif vars.steps.Reset_Acknowledge_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Reset_Acknowledge_SLA.data['sla_due_date_timestamp']}}{%else%}{{vars.input.records[0].ackDueDate}} {%endif%}"
                 },
                 "_showJson": false,
                 "operation": "Overwrite",
@@ -279,7 +279,7 @@
                 "when": "{{(vars.input.records[0].resSla.itemValue == (\"SLAState\" | picklist(\"Awaiting Action\", \"itemValue\"))or vars.input.records[0].resSla.itemValue == (\"SLAState\" | picklist(\"NA\", \"itemValue\"))) and (vars.sla_time_list.incResTime | int > 0) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incResTrackedOn)}}",
                 "resource": {
                     "resSla": "{%if vars.sla_time_list.incResTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
-                    "resDueBy": "{%if vars.sla_time_list.incResTime | int ==0%} null {% elif vars.steps.Reset_Resp_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Reset_Resp_SLA.data['sla_due_date_timestamp']}}{%else%}{{vars.input.records[0].resDueBy}} {%endif%}"
+                    "resDueBy": "{%if vars.sla_time_list.incResTime | int ==0%} null {% elif vars.steps.Reset_Response_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Reset_Response_SLA.data['sla_due_date_timestamp']}}{%else%}{{vars.input.records[0].resDueBy}} {%endif%}"
                 },
                 "_showJson": false,
                 "operation": "Overwrite",
@@ -308,7 +308,7 @@
                 "when": "{{(vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"Awaiting Action\", \"itemValue\")) or vars.input.records[0].slaState.itemValue == (\"SLAState\" | picklist(\"NA\", \"itemValue\"))) and (vars.sla_time_list.incAckTime | int > 0) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incAckTrackedOn) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incResTrackedOn)}}",
                 "resource": {
                     "slaState": "{%if vars.sla_time_list.incAckTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
-                    "ackDueDate": "{%if vars.steps.Set_Ack_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Set_Ack_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}"
+                    "ackDueDate": "{%if vars.steps.Set_Acknowledge_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Set_Acknowledge_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}"
                 },
                 "_showJson": false,
                 "operation": "Overwrite",
@@ -337,7 +337,7 @@
                 "when": "{{(vars.input.records[0].resSla.itemValue == (\"SLAState\" | picklist(\"Awaiting Action\", \"itemValue\"))or vars.input.records[0].resSla.itemValue == (\"SLAState\" | picklist(\"NA\", \"itemValue\"))) and (vars.sla_time_list.incResTime | int > 0) and (vars.input.records[0].status.itemValue != vars.sla_time_list.incResTrackedOn)}}",
                 "resource": {
                     "resSla": "{%if vars.sla_time_list.incResTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
-                    "resDueBy": "{%if vars.steps.Set_Resp_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Set_Resp_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}"
+                    "resDueBy": "{%if vars.steps.Set_Response_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Set_Response_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}"
                 },
                 "_showJson": false,
                 "operation": "Overwrite",

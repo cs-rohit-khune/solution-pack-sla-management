@@ -176,9 +176,9 @@
                         "recordTags": "{% if vars.sla_time_list.defaultSLA %}Default SLA{% endif %}"
                     },
                     "resSla": "{%if vars.sla_time_list.incResTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
-                    "resDueBy": "{%if vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Resp_SLA.data['sla_due_date_timestamp']}} {% else %} null {%endif%}",
+                    "resDueBy": "{%if vars.steps.Calculate_Response_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Response_SLA.data['sla_due_date_timestamp']}} {% else %} null {%endif%}",
                     "slaState": "{%if vars.sla_time_list.incAckTime | int ==0%}{{\"SLAState\" | picklist(\"NA\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Awaiting Action\", \"@id\")}}{%endif%}",
-                    "ackDueDate": "{%if vars.steps.Calculate_Ack_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Ack_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}"
+                    "ackDueDate": "{%if vars.steps.Calculate_Acknowledge_SLA.data['sla_due_date_timestamp'] %} {{vars.steps.Calculate_Acknowledge_SLA.data['sla_due_date_timestamp']}} {% else %} null {% endif%}"
                 },
                 "_showJson": false,
                 "operation": "Overwrite",

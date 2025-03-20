@@ -131,7 +131,7 @@
                     "ackSlaStatus": "{% if vars.input.records[0].dueBy < vars.input.records[0].modifyDate%}{{\"SLAState\" | picklist(\"Missed\", \"@id\")}}{%else%}{{\"SLAState\" | picklist(\"Paused\", \"@id\")}}{%endif%}",
                     "respSlaStatus": "\/api\/3\/picklists\/3f4ef2dc-7f56-4886-b215-ee08b344cbdf",
                     "ackSLApausedon": "{{globalVars.Current_Date}}",
-                    "alertRemainingAckSLA": "{{vars.steps.Calculate_Time_Left_for_Ack_before_Pausing.data['minutes_left'] | int}}"
+                    "alertRemainingAckSLA": "{{vars.steps.Calculate_Time_Left_for_Acknowledge_before_Pausing.data['minutes_left'] | int}}"
                 },
                 "_showJson": false,
                 "operation": "Append",
@@ -183,7 +183,7 @@
             "arguments": {
                 "when": "{{(vars.input.records[0].ackSlaStatus.itemValue == \"Awaiting Action\" or vars.input.records[0].ackSlaStatus.itemValue == \"Paused\" ) and vars.input.records[0].status.itemValue != \"Closed\"}}",
                 "resource": {
-                    "dueBy": "{{vars.steps.Recalculate_Ack_SLA.data['sla_due_date_timestamp']}}",
+                    "dueBy": "{{vars.steps.Recalculate_Acknowledge_SLA.data['sla_due_date_timestamp']}}",
                     "ackSlaStatus": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818"
                 },
                 "_showJson": false,
