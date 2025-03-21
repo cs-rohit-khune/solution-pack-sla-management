@@ -1,4 +1,5 @@
 {
+    "@context": "\/api\/3\/contexts\/Workflow",
     "@type": "Workflow",
     "triggerLimit": null,
     "name": "Alert - Update SLA Details",
@@ -138,7 +139,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "840",
+            "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
@@ -197,7 +198,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "705",
+            "top": "840",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -244,13 +245,13 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Calculate Response SLA -> Update SLA",
-            "targetStep": "\/api\/3\/workflow_steps\/78ebe527-de83-43be-9550-d952b23f26b7",
+            "name": "Calculate Response SLA -> Note for Default SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/ab73a40a-39cc-411d-9be1-774040beaa83",
             "sourceStep": "\/api\/3\/workflow_steps\/5f38fc54-a5ea-4f7c-a0e6-dfd8231bf485",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "01b47abd-7d94-4a51-80bc-c1d91152cfbf"
+            "uuid": "a4181ee5-a6b6-4118-90c9-88a517fe3df5"
         },
         {
             "@type": "WorkflowRoute",
@@ -264,6 +265,16 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Note for Default SLA -> Update SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/78ebe527-de83-43be-9550-d952b23f26b7",
+            "sourceStep": "\/api\/3\/workflow_steps\/ab73a40a-39cc-411d-9be1-774040beaa83",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "49a09970-042a-421b-b9b5-9dd0b8e6fcb6"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Start -> GET SLA",
             "targetStep": "\/api\/3\/workflow_steps\/577b4fa8-b0aa-4cd0-95d5-50ed8a8b3a48",
             "sourceStep": "\/api\/3\/workflow_steps\/e184dde0-72cd-4daf-ad51-e9861f0244ff",
@@ -271,16 +282,6 @@
             "isExecuted": false,
             "group": null,
             "uuid": "aae07c04-0a33-4ae4-b4f4-468f694397ff"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Update SLA -> Note for Default SLA",
-            "targetStep": "\/api\/3\/workflow_steps\/ab73a40a-39cc-411d-9be1-774040beaa83",
-            "sourceStep": "\/api\/3\/workflow_steps\/78ebe527-de83-43be-9550-d952b23f26b7",
-            "label": null,
-            "isExecuted": false,
-            "group": null,
-            "uuid": "41ef2ab7-3b5f-46b7-9980-32e2b0fe2bd1"
         },
         {
             "@type": "WorkflowRoute",
